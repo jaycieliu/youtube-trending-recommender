@@ -10,7 +10,3 @@ data/processed/
 __pycache__/
 *.pyc
 .venv/
-
-
-.ipynb_checkpoints/
-**/.ipynb_checkpoints/
