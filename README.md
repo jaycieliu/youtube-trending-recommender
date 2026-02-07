@@ -1,99 +1,152 @@
 # YouTube Engagement Recommender  
 ### Next-Day KPI Forecasting + Ranking Policy Simulator
 
-Build an industry-style **policy simulator** that selects a daily **Top-K slate** of videos to optimize **next-day engagement**.  
-The project predicts two next-day KPIs and compares multiple ranking policies (1-stage, 2-stage, weighted/balanced).
+This project builds an **offline recommender-policy simulator** that selects a daily **Top-K slate** of videos to optimize **next-day engagement**.  
+We model two KPIs (completion depth and total watch time), then compare multiple ranking policies—including a **balanced weighted policy** that explicitly manages KPI trade-offs.
+
+> **Core idea:** prediction is not the end goal—**ranking policy** is.  
+> A good model can still produce a bad product outcome if the ranking objective is misaligned.
 
 ---
 
-## Problem Setup
+## 1) Problem Definition
 
-We simulate a product decision made each day:
+Each day we make a product decision:
 
-> **On day _t_**, choose **K videos** to promote (the “slate”)  
-> and evaluate how that slate performs on **day _t+1_**.
+- On **day _t_**, choose **K videos** to promote (the “slate”)
+- Evaluate performance on **day _t+1_** using next-day outcomes
 
-### KPIs (Targets)
-- **Primary KPI:** `y_next_avg_pct_viewed` (next-day average % viewed)
-- **Secondary KPI:** `y_next_watch_time_log` (next-day watch time, log-transformed for modeling)
+### Targets (Next-Day KPIs)
+- **Primary:** `y_next_avg_pct_viewed`  
+  *Average % of the video watched on the next day (depth/completion).*
+- **Secondary:** `y_next_watch_time_log`  
+  *Next-day watch time, modeled in log space for stability.*
 
-We report watch time in **real units** using `exp(x) - 1` (via `np.expm1`) when evaluating uplift.
+When reporting watch time in real units, we invert the log transform with:
+- `watch_time_real = expm1(y_next_watch_time_log)` (i.e., `np.expm1`)
 
 ---
 
-## Approach
+## 2) Data & Features ✅ (edit as needed)
 
-### 1) Train Predictive Models (Next-Day Forecast)
-We build regression models to predict:
-- `pred_pct` → next-day avg % viewed
-- `pred_watch_log` → next-day watch time (log)
+**Unit of observation:** (video, date)  
+**Features include:** daily views, likes/dislikes, comments, subs change, video length, etc.  
+**Prediction goal:** estimate next-day engagement metrics for each (video, day).
 
-### 2) Rank and Select Daily Top-K (Policy Simulator)
-We compare multiple ranking policies that produce a **daily Top-K slate**:
+> Note: some policies heavily prefer **short videos** (higher completion %) even if they reduce total watch time. This is a key reason the KPI trade-off appears.
 
-**(A) 1-stage (pct-only)**  
-Rank videos by predicted next-day % viewed (`pred_pct`), pick Top-K.
+---
 
-**(B) 2-stage (pct → watch)**  
-Stage 1: for each day, keep top **N candidates** by `pred_pct`  
-Stage 2: within those candidates, rank by `pred_watch_log`, pick Top-K
+## 3) Method Overview
 
-**(C) 1-stage (balanced weighted score)** ✅ recommended  
-Create a single score that trades off both KPIs:
+### Step A — Forecast Next-Day KPIs
+We fit regression models to produce:
+- `pred_pct` = predicted `y_next_avg_pct_viewed`
+- `pred_watch_log` = predicted `y_next_watch_time_log`
+
+### Step B — Policy Simulator (Daily Top-K Slate)
+For each day, we rank candidates and take the **Top-K**.  
+We compare the policies below.
+
+---
+
+## 4) Ranking Policies Compared
+
+### (P0) Random Slate (sanity baseline)
+Sample K items per day to confirm uplift ≈ 0.
+
+### (P1) 1-Stage: Pct-Only
+Rank by `pred_pct` per day → pick Top-K.
+
+**Typical behavior:**  
+Improves completion depth (% viewed), but often selects shorter videos → watch time can drop.
+
+### (P2) 2-Stage: Pct → Watch
+Stage 1: per day, keep top **N candidates** by `pred_pct`  
+Stage 2: within those candidates, rank by `pred_watch_log` → pick Top-K
+
+**Typical behavior:**  
+Pushes watch time up, but may sacrifice completion depth.
+
+### (P3) 1-Stage: Balanced Weighted Score ✅ recommended
+Compute a single score from standardized predictions:
 \[
-score = w\_{pct}\cdot z(pred\_pct)\;+\;(1-w\_{pct})\cdot z(pred\_watch\_log)
+score = w_{pct}\cdot z(pred\_pct)\;+\;(1-w_{pct})\cdot z(pred\_watch\_log)
 \]
-Rank by `score` and pick Top-K.
+Rank by `score` per day → pick Top-K.
 
-Why the weighted score matters: optimizing only `% viewed` tends to favor **shorter videos** (higher completion rate), which can reduce total watch time.
+**Why z-scores?**  
+Because `% viewed` and `watch_time_log` live on different scales—z-scoring makes weights interpretable.
 
 ---
 
-## Key Results (Offline Policy Evaluation)
+## 5) Offline Evaluation Protocol
 
-### Policy Comparison Table
-Full metrics are saved here:
+For each split (VALID / TEST):
+
+1. **Baseline:** average KPI across *all* videos in that split  
+2. **Slate KPI:** average KPI within the selected Top-K slates  
+3. **Uplift:** `slate_mean − baseline_mean`
+
+We evaluate both:
+- `y_next_avg_pct_viewed` (higher is better)
+- `expm1(y_next_watch_time_log)` (higher is better, in real units)
+
+Outputs are saved in:
 - `reports/tables/policy_comparison.csv`
 - `reports/tables/policy_comparison.md`
 
-### Visuals
-**Test KPIs (absolute)**
+---
+
+## 6) Results (Key Takeaways)
+
+### Figures
+**TEST: KPI Levels**
 - ![kpis_test](reports/figures/kpis_test.png)
 
-**Test KPI uplift vs baseline**
+**TEST: KPI Uplift vs Baseline**
 - ![test_kpis_comparison](reports/figures/test_kpis_comparison.png)
 
----
+### What the Results Mean
+**Pct-Only (P1)** creates a strong uplift in `% viewed` but decreases watch time.  
+This indicates the policy is selecting videos people finish (“watch deeper”), but those videos tend to be shorter, so total watch time falls.
 
-## Interpretation
+**2-Stage (P2)** improves watch time but decreases `% viewed`.  
+This indicates the policy is selecting longer videos that generate more total watch time, but users complete a smaller fraction.
 
-### Trade-off: % Viewed vs Watch Time
-Across the dataset, next-day `% viewed` and next-day watch time are positively correlated, but **ranking can still create a trade-off** because the policy may systematically prefer **short videos**:
+**Balanced Weighted (P3)** is a compromise policy.  
+After tuning on VALID, **`w_pct ≈ 0.55`** delivered:
+- positive uplift in `% viewed`, **and**
+- non-negative (or improved) uplift in watch time on TEST.
 
-- **Pct-only policy:** selects videos people finish (high %), often short → **watch time decreases**
-- **2-stage policy (pct → watch):** forces watch time up in stage 2 → **% viewed decreases**
-- **Balanced policy (weighted):** finds a middle ground → modest improvement in both KPIs (or at least avoids large losses)
-
-### Balanced Policy Choice
-We tune `w_pct` on the validation set (sweep from 0.10 → 0.90).  
-A practical choice is the smallest `w_pct` that:
-- keeps `% viewed` uplift **positive**, and  
-- makes watch time uplift **non-negative** (or acceptable).
-
-Example outcome (your run): `w_pct ≈ 0.55` improved both metrics on test.
+> In product terms: P3 avoids an extreme “short-video completion optimizer” (P1) and avoids an extreme “watch-time maximizer” (P2).
 
 ---
 
-## Repository Structure
+## 7) Why This Trade-Off Happens (Intuition)
+
+Even when KPIs are positively correlated overall, **ranking introduces selection bias**:
+
+- Maximizing `% viewed` tends to favor **shorter videos**  
+  → higher completion fraction, but lower total minutes watched.
+- Maximizing watch time tends to favor **longer videos**  
+  → higher minutes, but lower completion fraction.
+
+A good ranking policy must either:
+- **explicitly optimize one KPI**, or
+- **combine KPIs** (weighted score / constraints / Pareto frontier).
+
+---
+
+## 8) Repo Structure
 
 ```text
 youtube-trending-recommender/
-├── data/                         # (local) raw/processed data (not pushed if large)
 ├── notebooks/
 │   ├── 00_load_clean.ipynb
-│   └── 00_end_to_end.ipynb       # end-to-end modeling + policy simulation
+│   └── 00_end_to_end.ipynb
 ├── reports/
-│   ├── figures/                  # saved plots for README/report
-│   └── tables/                   # policy comparison tables (csv/md)
-├── src/                          # (optional) reusable functions later
+│   ├── figures/                  # plots rendered in README
+│   └── tables/                   # csv/md summary tables
+├── src/                          # (optional) reusable code
 └── README.md
