@@ -50,14 +50,5 @@ Key takeaway:
    - `00_end_to_end.ipynb`
 ## Key Figures (VALID / TEST)
 
-<p float="left">
-  <img src="reports/figures/TEST%20Policy%20Comparison.png" width="700" />
-</p>
+<img width="1450" height="670" alt="image" src="https://github.com/user-attachments/assets/c18ac13c-1c47-48b4-9047-2be1711c40d2" />
 
-<p float="left">
-  <img src="reports/figures/TEST%20KPIs%20Comparison.png" width="700" />
-</p>
-
-<p float="left">
-  <img src="reports/figures/Video%20Length%20Distribution%20(VALID).png" width="700" />
-</p>
