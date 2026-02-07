@@ -154,16 +154,18 @@ A good ranking policy must either:
 
 ---
 
-## Reproduce
+## 8) Reproduce
 ```bash
 pip install -r requirements.txt
 jupyter notebook notebooks/00_end_to_end.ipynb
 ```
-Outputs saved to `reports/figures` and `reports/tables`
+Outputs saved to:
+- [`reports/figures/`](reports/figures/)
+- [`reports/tables/`](reports/tables/)
 
 ---
 
-## 8) Repo Structure
+## 9) Repo Structure
 
 ```text
 youtube-trending-recommender/
