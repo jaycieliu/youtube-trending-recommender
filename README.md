@@ -120,7 +120,7 @@ Outputs are saved in:
 
 ### Policy comparison
 <p align="center">
-  <img src="reports/figures/TEST Policy Comparison.png" width="520" alt="TEST Policy Comparison">
+  <img src="reports/figures/test_policy_comparison.png" width="520" alt="TEST Policy Comparison">
 </p>
 
 
