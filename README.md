@@ -50,5 +50,19 @@ Key takeaway:
    - `00_end_to_end.ipynb`
 ## Key Figures (VALID / TEST)
 
-<img width="1450" height="670" alt="image" src="https://github.com/user-attachments/assets/c18ac13c-1c47-48b4-9047-2be1711c40d2" />
+## Results (Policy Comparison)
+
+We evaluated ranking policies using **true next-day KPIs** on VALID / TEST splits (offline replay).
+
+**Slate size:** K = 100  
+**2-stage candidate pool:** N = 1000 → final K = 100
+
+### Key takeaway
+- **Pct-only** (optimize avg % viewed) increases **Avg % Viewed** but hurts **Watch Time** (shorter videos).
+- **2-stage (pct → watch)** increases **Watch Time** but reduces **Avg % Viewed**.
+- A **balanced weighted policy** provides a trade-off between the two KPIs.
+
+### Policy comparison table
+- Markdown: [`reports/tables/policy_comparison.md`](reports/tables/policy_comparison.md)  
+- CSV: [`reports/tables/policy_comparison.csv`](reports/tables/policy_comparison.csv)
 
