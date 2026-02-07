@@ -50,6 +50,19 @@ Key takeaway:
    - `00_end_to_end.ipynb`
 ## Key Figures (VALID / TEST)
 
+<img src="reports/figures/KPIs%20(TEST).png" width="850" />
+
+<img src="reports/figures/TEST%20KPIs%20Comparison.png" width="850" />
+
+<img src="reports/figures/TEST%20Policy%20Comparison.png" width="850" />
+
+<img src="reports/figures/Video%20Length%20Distribution%20(TEST).png" width="850" />
+
+### Figures (VALID)
+
+<img src="reports/figures/Video%20Length%20Distribution%20(VALID).png" width="850" />
+
+<img src="reports/figures/Video%20Length%20Histogram%20(VALID).png" width="850" />
 ## Results (Policy Comparison)
 
 We evaluated ranking policies using **true next-day KPIs** on VALID / TEST splits (offline replay).
