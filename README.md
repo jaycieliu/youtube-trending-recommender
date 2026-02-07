@@ -155,15 +155,12 @@ A good ranking policy must either:
 ---
 
 ## Reproduce
-1. Create env: `pip install -r requirements.txt` (or conda)
-2. Run: `notebooks/00_end_to_end.ipynb`
-3. Outputs saved to `reports/figures` and `reports/tables`
-
-## Reproduce
 ```bash
 pip install -r requirements.txt
 jupyter notebook notebooks/00_end_to_end.ipynb
 ```
+Outputs saved to `reports/figures` and `reports/tables`
+
 ---
 
 ## 8) Repo Structure
