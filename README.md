@@ -163,6 +163,9 @@ Outputs saved to:
 - [`reports/figures/`](reports/figures/)
 - [`reports/tables/`](reports/tables/)
 
+> Note: To reproduce results, download the dataset (not included in repo) and place it under `data/` following the notebook instructions.
+> For exact reproducibility, the notebook sets random seeds where applicable.
+
 ---
 
 ## 9) Repo Structure
