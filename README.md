@@ -99,13 +99,25 @@ Outputs are saved in:
 ---
 
 ## 6) Results (Key Takeaways)
+**Tables**
+- 📄 Policy comparison (CSV): [reports/tables/policy_comparison.csv](reports/tables/policy_comparison.csv)
+- 📄 Policy comparison (Markdown): [reports/tables/policy_comparison.md](reports/tables/policy_comparison.md)
 
-### Figures
-**TEST: KPI Levels**
-- ![kpis_test](reports/figures/kpis_test.png)
+**Figures**
+**🖼️ TEST: Policy Comparison**
+- <p align="center">
+  <img src="reports/figures/TEST%20Policy%20Comparison.png" width="520" alt="TEST Policy Comparison">
+</p>
 
-**TEST: KPI Uplift vs Baseline**
-- ![test_kpis_comparison](reports/figures/test_kpis_comparison.png)
+**🖼️ TEST: KPI Levels**
+<p align="center">
+  <img src="reports/figures/kpis_test.png" width="520" alt="TEST KPI Levels">
+</p>
+
+**🖼️ TEST: KPI Uplift vs Baseline**
+<p align="center">
+  <img src="reports/figures/test_kpis_comparison.png" width="520" alt="TEST KPI Uplift vs Baseline">
+</p>
 
 ### What the Results Mean
 **Pct-Only (P1)** creates a strong uplift in `% viewed` but decreases watch time.  
