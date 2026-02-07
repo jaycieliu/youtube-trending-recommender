@@ -156,7 +156,6 @@ A good ranking policy must either:
 ```text
 youtube-trending-recommender/
 ├── notebooks/
-│   ├── 00_load_clean.ipynb
 │   └── 00_end_to_end.ipynb
 ├── reports/
 │   ├── figures/                  # plots rendered in README
