@@ -125,20 +125,18 @@ Outputs are saved in:
 
 
 
-### What the Results Mean
-**Pct-Only (P1)** creates a strong uplift in `% viewed` but decreases watch time.  
-This indicates the policy is selecting videos people finish (“watch deeper”), but those videos tend to be shorter, so total watch time falls.
+## What the Results Mean
 
-**2-Stage (P2)** improves watch time but decreases `% viewed`.  
-This indicates the policy is selecting longer videos that generate more total watch time, but users complete a smaller fraction.
+- **Pct-only policy (P1)** increases **completion depth** (% viewed) but reduces **total watch time**.  
+  *Interpretation:* it over-selects shorter videos that are easier to finish.
 
-**Balanced Weighted (P3)** is a compromise policy.  
-After tuning on VALID, **`w_pct ≈ 0.55`** delivered:
-- positive uplift in `% viewed`, **and**
-- non-negative (or improved) uplift in watch time on TEST.
+- **2-stage policy (P2: pct → watch)** increases **watch time** but reduces **% viewed**.  
+  *Interpretation:* it shifts toward longer videos, raising minutes watched but lowering completion fraction.
 
-> In product terms: P3 avoids an extreme “short-video completion optimizer” (P1) and avoids an extreme “watch-time maximizer” (P2).
+- **Balanced weighted policy (P3)** targets a **middle ground** by tuning `w_pct` (VALID) and evaluating on TEST.  
+  *Goal:* avoid both extremes (pure completion optimizer vs pure watch-time maximizer).
 
+  
 ---
 
 ## 7) Why This Trade-Off Happens (Intuition)
