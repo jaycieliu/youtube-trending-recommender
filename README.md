@@ -99,13 +99,14 @@ Outputs are saved in:
 ---
 
 ## 6) Results (Key Takeaways)
+
 **Tables**
 - 📄 Policy comparison (CSV): [reports/tables/policy_comparison.csv](reports/tables/policy_comparison.csv)
 - 📄 Policy comparison (Markdown): [reports/tables/policy_comparison.md](reports/tables/policy_comparison.md)
 
 **Figures**
 **🖼️ TEST: Policy Comparison**
-- <p align="center">
+<p align="center">
   <img src="reports/figures/TEST%20Policy%20Comparison.png" width="520" alt="TEST Policy Comparison">
 </p>
 
