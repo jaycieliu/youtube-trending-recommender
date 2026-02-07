@@ -49,8 +49,7 @@ Key takeaway:
    - `00_load_clean.ipynb`
    - `00_end_to_end.ipynb`
 ## Key Figures (VALID / TEST)
-
-<img src="reports/figures/KPIs%20(TEST).png" width="850" />
+<img src="reports/figures/KPIs%20(TEST).png" width="850">
 
 <img src="reports/figures/TEST%20KPIs%20Comparison.png" width="850" />
 
