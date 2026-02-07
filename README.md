@@ -48,3 +48,16 @@ Key takeaway:
 2. Run notebooks in order:
    - `00_load_clean.ipynb`
    - `00_end_to_end.ipynb`
+## Key Figures (VALID / TEST)
+
+<p float="left">
+  <img src="reports/figures/TEST%20Policy%20Comparison.png" width="700" />
+</p>
+
+<p float="left">
+  <img src="reports/figures/TEST%20KPIs%20Comparison.png" width="700" />
+</p>
+
+<p float="left">
+  <img src="reports/figures/Video%20Length%20Distribution%20(VALID).png" width="700" />
+</p>
