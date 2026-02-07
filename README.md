@@ -100,8 +100,6 @@ Outputs are saved in:
 
 ## 6) Results (Key Takeaways)
 
-## Outputs (click to open)
-
 - 📓 End-to-end notebook: [notebooks/00_end_to_end.ipynb](notebooks/00_end_to_end.ipynb)
 - 📊 Policy comparison (Markdown): [reports/tables/policy_comparison.md](reports/tables/policy_comparison.md)
 - 📄 Policy comparison (CSV): [reports/tables/policy_comparison.csv](reports/tables/policy_comparison.csv)
