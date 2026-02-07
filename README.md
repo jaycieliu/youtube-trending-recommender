@@ -159,6 +159,11 @@ A good ranking policy must either:
 2. Run: `notebooks/00_end_to_end.ipynb`
 3. Outputs saved to `reports/figures` and `reports/tables`
 
+## Reproduce
+```bash
+pip install -r requirements.txt
+jupyter notebook notebooks/00_end_to_end.ipynb
+
 ---
 
 ## 8) Repo Structure
