@@ -99,18 +99,17 @@ Outputs are saved in:
 ---
 
 ## 6) Results (Key Takeaways)
-
 - 📓 End-to-end notebook: [notebooks/00_end_to_end.ipynb](notebooks/00_end_to_end.ipynb)
 - 📊 Policy comparison (Markdown): [reports/tables/policy_comparison.md](reports/tables/policy_comparison.md)
 - 📄 Policy comparison (CSV): [reports/tables/policy_comparison.csv](reports/tables/policy_comparison.csv)
-
+  
 ---
 
 ## Key Figures (TEST)
 
 ### KPI levels (Avg % Viewed + Watch Time)
 <p align="center">
-  <img src="reports/figures/kpis_test.png" width="520" alt="TEST KPI Levels">
+  <img src="reports/figures/kpis_test.png" width="700">" width="520" alt="TEST KPI Levels">
 </p>
 
 ### KPI uplift vs baseline
