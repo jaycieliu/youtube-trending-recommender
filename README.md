@@ -27,7 +27,7 @@ When reporting watch time in real units, we invert the log transform with:
 
 ---
 
-## 2) Data & Features ✅ (edit as needed)
+## 2) Data & Features 
 
 **Unit of observation:** (video, date)  
 **Features include:** daily views, likes/dislikes, comments, subs change, video length, etc.  
