@@ -109,7 +109,7 @@ Outputs are saved in:
 
 ### KPI levels (Avg % Viewed + Watch Time)
 <p align="center">
-  <img src="reports/figures/kpis_test.png" width="700">" width="520" alt="TEST KPI Levels">
+  <img src="reports/figures/kpis_test.png" width="520" alt="TEST KPI Levels">
 </p>
 
 ### KPI uplift vs baseline
