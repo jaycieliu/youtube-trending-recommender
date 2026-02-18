@@ -115,7 +115,7 @@ Outputs are saved in:
 - **Notebook 2 (model + policy):** [`notebooks/01_model_and_policy.ipynb`](notebooks/01_model_and_policy.ipynb)
 
 Artifacts:
-- **Policy comparison (Markdown):** [`reports/tables/policy_comparison.md`](reports/tables/test_policy_comparison.md)
+- **Policy comparison (Markdown):** [`reports/tables/test_policy_comparison.md`](reports/tables/test_policy_comparison.md)
 - **Policy comparison (CSV):** [`reports/tables/test_policy_comparison.csv`](reports/tables/test_policy_comparison.csv)
 
 ---
