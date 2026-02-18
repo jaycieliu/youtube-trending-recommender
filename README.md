@@ -116,7 +116,7 @@ Outputs are saved in:
 
 Artifacts:
 - **Policy comparison (Markdown):** [`reports/tables/policy_comparison.md`](reports/tables/test_policy_comparison.md)
-- **Policy comparison (CSV):** [`reports/tables/policy_comparison.csv`](reports/tables/test_policy_comparison.csv)
+- **Policy comparison (CSV):** [`reports/tables/test_policy_comparison.csv`](reports/tables/test_policy_comparison.csv)
 
 ---
 
