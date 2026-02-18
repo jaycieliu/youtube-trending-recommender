@@ -93,9 +93,7 @@ Rank by `pred_watch_log` per day → pick Top-K.
 
 Compute a single score from standardized predictions:
 
-\[
-score = w_{pct}\cdot z(pred\_pct) + (1-w_{pct})\cdot z(pred\_watch\_log)
-\]
+**Score:** `score = w_pct · z(pred_pct) + (1 - w_pct) · z(pred_watch_log)`
 
 Rank by `score` per day → pick Top-K.
 
