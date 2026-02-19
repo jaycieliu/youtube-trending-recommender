@@ -162,7 +162,8 @@ From the repo root:
 ```bash
 pip install -r requirements.txt
 jupyter notebook notebooks/00_load_clean.ipynb
-jupyter notebook notebooks/01_model_and_policy.ipynb ```
+jupyter notebook notebooks/01_model_and_policy.ipynb
+```
 
 ---
 
