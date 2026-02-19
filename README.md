@@ -175,9 +175,8 @@ youtube-trending-recommender/
 │  ├─ 00_load_clean.ipynb
 │  └─ 01_model_and_policy.ipynb
 ├─ reports/
-│  ├─ figures/     # plots rendered in README
-│  └─ tables/      # csv/md summary tables (optional)
-├─ src/            # (optional) reusable code
+│  ├─ figures/     
+│  └─ tables/               
 ├─ requirements.txt
 └─ README.md
 ```
