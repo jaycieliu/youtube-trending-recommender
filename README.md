@@ -137,11 +137,44 @@ Even if KPIs are positively correlated overall, **ranking creates selection bias
 
 ---
 
-## 7) Reproduce
+## 7) Limitations & Future Improvements
+
+### Limitations
+- **Offline evaluation only:** results come from a replay-style simulator, not an online A/B test.
+- **No causal guarantees:** improvements may not transfer to production due to position bias, feedback loops, and changing user behavior.
+- **Two-KPI objective:** we optimize engagement KPIs, not a direct business metric (e.g., revenue, retention, subscriptions).
+- **Simplified slate setting:** assumes a fixed Top-K per day and ignores constraints (freshness, diversity, creator fairness, safety).
+- **Model uncertainty not used:** policies rank by point predictions only (no confidence intervals / uncertainty-aware ranking).
+
+### Future Improvements
+- Add **uncertainty-aware ranking** (e.g., penalize high-variance predictions, or use conservative estimates).
+- Add **constraints** (minimum diversity, creator caps, freshness, and content safety filters).
+- Extend evaluation to **more KPIs** (CTR, likes/comments, retention proxies) or a **single business objective** if available.
+- Try **Pareto frontier / constrained optimization** instead of a fixed weighted sum.
+- Run a **robustness check** across multiple random seeds and different time windows.
+
+---
+
+## 8) Reproduce
 
 From the repo root:
 
 ```bash
 pip install -r requirements.txt
 jupyter notebook notebooks/00_load_clean.ipynb
-jupyter notebook notebooks/01_model_and_policy.ipynb
+jupyter notebook notebooks/01_model_and_policy.ipynb ```
+
+---
+
+## 9) Repo Structure
+
+youtube-trending-recommender/
+├─ notebooks/
+│  ├─ 00_load_clean.ipynb
+│  └─ 01_model_and_policy.ipynb
+├─ reports/
+│  ├─ figures/     # plots rendered in README
+│  └─ tables/      # csv/md summary tables (optional)
+├─ src/            # (optional) reusable code
+├─ requirements.txt
+└─ README.md
