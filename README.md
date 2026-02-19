@@ -169,6 +169,7 @@ jupyter notebook notebooks/01_model_and_policy.ipynb
 
 ## 9) Repo Structure
 
+```bash
 youtube-trending-recommender/
 ├─ notebooks/
 │  ├─ 00_load_clean.ipynb
@@ -179,3 +180,4 @@ youtube-trending-recommender/
 ├─ src/            # (optional) reusable code
 ├─ requirements.txt
 └─ README.md
+```
