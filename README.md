@@ -46,6 +46,16 @@ This project evaluates multiple ranking policies offline and compares how they p
 2. Run cells in order to generate predictions / policy simulation / evaluation
 3. Review output tables in `reports/`
 
+---
+
+## Tech Stack
+
+- **Languages:** Python
+- **Libraries:** pandas, NumPy, scikit-learn, matplotlib
+- **Environment:** Jupyter Notebook / VS Code
+
+---
+
 ## Repo structure
 
 ```text
