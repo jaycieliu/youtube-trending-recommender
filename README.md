@@ -25,7 +25,7 @@ This project evaluates multiple ranking policies offline and compares how they p
 - **Balanced policy**
 - **Two-stage policy**
 
-> See full policy definitions and evaluation details in [Project Details](docs/project-details.md).
+> See full policy definitions and evaluation details in [Project Details](reports/project_details.md).
 
 ## Key outputs
 
@@ -36,7 +36,7 @@ This project evaluates multiple ranking policies offline and compares how they p
 
 ## Quick links
 
-- [Project details (full methodology + results)](reports/project-details.md)
+- [Project details (full methodology + results)](reports/project_details.md)
 - [Notebook](notebooks/01_model_and_policy.ipynb)
 - [Policy comparison table](reports/tables/test_policy_comparison.md)
 
