@@ -36,7 +36,7 @@ This project evaluates multiple ranking policies offline and compares how they p
 
 ## Quick links
 
-- [Project details (full methodology + results)](docs/project-details.md)
+- [Project details (full methodology + results)](reports/project-details.md)
 - [Notebook](notebooks/01_model_and_policy.ipynb)
 - [Policy comparison table](reports/tables/policy_comparison.md)
 
@@ -52,6 +52,7 @@ This project evaluates multiple ranking policies offline and compares how they p
 youtube-trending-recommender/
 ├── README.md
 ├── notebooks/
+│   ├── 00_load_clean.ipynb
 │   └── 01_model_and_policy.ipynb
 ├── reports/
 │   └── project_details.md
