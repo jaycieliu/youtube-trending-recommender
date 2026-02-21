@@ -40,12 +40,6 @@ This project evaluates multiple ranking policies offline and compares how they p
 - [Notebook](notebooks/01_model_and_policy.ipynb)
 - [Policy comparison table](reports/tables/test_policy_comparison.md)
 
-## How to run (minimal)
-
-1. Open the main notebook
-2. Run cells in order to generate predictions / policy simulation / evaluation
-3. Review output tables in `reports/`
-
 ---
 
 ## Tech Stack
