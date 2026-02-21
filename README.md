@@ -38,7 +38,7 @@ This project evaluates multiple ranking policies offline and compares how they p
 
 - [Project details (full methodology + results)](reports/project-details.md)
 - [Notebook](notebooks/01_model_and_policy.ipynb)
-- [Policy comparison table](reports/tables/policy_comparison.md)
+- [Policy comparison table](reports/tables/test_policy_comparison.md)
 
 ## How to run (minimal)
 
@@ -67,6 +67,8 @@ youtube-trending-recommender/
 ├── reports/
 │   └── project_details.md
 │   └── tables/
-│       ├── policy_comparison.csv
-│       └── policy_comparison.md
+│       ├── test_policy_comparison.csv
+│       ├── test_policy_comparison.md
+│       ├── valid_policy_comparison.csv
+│       └── valid_policy_comparison.md
 ```
