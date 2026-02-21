@@ -1,4 +1,4 @@
-# YouTube Engagement Recommender  
+# Project Details — YouTube Trending Recommender
 **Next-Day KPI Forecasting + Ranking Policy Simulator (Offline)**
 
 This project builds an **offline policy simulator** for selecting a daily **Top-K slate** of videos to maximize **next-day engagement** on **YouTube**.
@@ -93,22 +93,22 @@ Two-step ranking:
 ## 5) Results (TEST)
 
 ### 5.1 Policy Comparison Table (TEST)
-<img src="reports/figures/test_policy_comparison.png" width="950" />
+<img src="figures/test_policy_comparison.png" width="950" />
 
 ### 5.2 KPI Levels on TEST
 These plots show absolute KPI values under each policy:
 
-<img src="reports/figures/kpis_test.png" width="950" />
+<img src="figures/kpis_test.png" width="950" />
 
 ### 5.3 Uplift vs Random Baseline (TEST)
 Uplift is computed relative to the **random baseline**:
 
-<img src="reports/figures/test_kpis_comparison.png" width="950" />
+<img src="figures/test_kpis_comparison.png" width="950" />
 
 ### 5.4 Video Length Distribution (TEST)
 This helps explain *why* the KPI trade-off happens:
 
-<img src="reports/figures/video_length_distribution_test.png" width="950" />
+<img src="figures/video_length_distribution_test.png" width="950" />
 
 ---
 
@@ -165,18 +165,5 @@ jupyter notebook notebooks/00_load_clean.ipynb
 jupyter notebook notebooks/01_model_and_policy.ipynb
 ```
 
----
 
-## 9) Repo Structure
 
-```bash
-youtube-trending-recommender/
-├─ notebooks/
-│  ├─ 00_load_clean.ipynb
-│  └─ 01_model_and_policy.ipynb
-├─ reports/
-│  ├─ figures/     
-│  └─ tables/               
-├─ requirements.txt
-└─ README.md
-```
